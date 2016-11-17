@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel='icon' href="favicon.ico" type="image/x-icon">
     <title>华北理工大学迁安学院官网</title>
-
     <link rel="stylesheet" href="homepage.css">
     <style>
         #ul {
@@ -114,6 +114,32 @@
 
         .active {
             background: rgb(143, 0, 11);
+        }
+        /*回到顶部*/
+        .actGotop {
+            position: fixed;
+            _position: absolute;
+            bottom: 100px;
+            right: 50px;
+            width: 150px;
+            height: 195px;
+            display: none;
+        }
+
+        .actGotop a, .actGotop a:link {
+            width: 150px;
+            height: 195px;
+            display: inline-block;
+            background: url(image/gotop.png) no-repeat;
+            _background: url(image/gotop.gif) no-repeat;
+            outline: none;
+        }
+
+        .actGotop a:hover {
+            width: 150px;
+            height: 195px;
+            background: url(image/gotopd.gif) no-repeat;
+            outline: none;
         }
     </style>
     <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
@@ -260,10 +286,11 @@
                 <li><a href="#">迁院概况</a>
                     <div class="pic">
                         <div class="pic1 pic11"></div>
-                        <p>迁院以常为新。</p>
+                        <p>明德博学
+                            博学求实</p>
                         <div class="link">
                             <a href="cbb1.html">迁院简介</a>
-                            <a href="#">现任领导</a>
+                            <a href="cbb3.html">现任领导</a>
                             <a href="#">历任领导</a>
                         </div>
                         <div class="link">
@@ -279,7 +306,7 @@
                 <li><a href="#">招生与资源</a>
                     <div class="pic">
                         <div class="pic1 pic12"></div>
-                        <p>宝剑锋从磨砺出</p>
+                        <p>知、仁、勇三者，天下之达德也</p>
                         <div class="link">
                             <a href="#">专升本</a>
                             <a href="#">留学生</a>
@@ -298,7 +325,7 @@
                 <li><a href="#">院系设置</a>
                     <div class="pic">
                         <div class="pic1 pic13"></div>
-                        <p>梅花香自苦寒来</p>
+                        <p>诚信立身，廉洁自律，正派做人</p>
                         <div class="link">
                             <a href="#">机械工程系</a>
                             <a href="#">建筑与矿业系</a>
@@ -316,7 +343,7 @@
                 <li><a href="#">教育教学</a>
                     <div class="pic">
                         <div class="pic1 pic14"></div>
-                        <p>离离原上草</p>
+                        <p>当仁不让于师</p>
                         <div class="link">
                             <a href="#">师资队伍</a>
                             <a href="#">继续教育</a>
@@ -336,7 +363,7 @@
                 <li><a href="#">职能处室</a>
                     <div class="pic">
                         <div class="pic1 pic15"></div>
-                        <p>天生我才必有用</p>
+                        <p>弘扬中华美德，构建和谐学校</p>
                         <div class="link">
                             <a href="#">综合办公室</a>
                             <a href="#">人事处</a>
@@ -355,7 +382,10 @@
                 <li><a href="#">合作交流</a>
                     <div class="pic">
                         <div class="pic1 pic16"></div>
-                        <p>志于道，据于德，依于仁，游于艺。</p>
+                        <p>秋冬春夏，
+                            伴随着四时的运行，
+                            青春和迁园融为一体，
+                            迁院成为永恒</p>
                         <div class="link">
                             <a href="#">合作概览</a>
 
@@ -372,10 +402,7 @@
                 <li><a href="#">校园生活</a>
                     <div class="pic">
                         <div class="pic1 pic17"></div>
-                        <p>秋冬春夏，
-                            伴随着四时的运行，
-                            青春和迁园融为一体，
-                            迁院成为永恒</p>
+                        <p>志于道，据于德，依于仁，游于艺。</p>
                         <div class="link">
                             <a href="#">艺术与文化</a>
                             <a href="#">体育与健康</a>
@@ -567,13 +594,11 @@
 </div>
 <div id="wei">
     <!--<div style="width: 135px;height: 75px;">-->
-    <div style="width: 100px;height: 50px;float: right;padding-right: 35px;padding-top: 25px;">
-        <p style="font-size: 20px;"><a href="#" style="color:lightgray;">回到原网页</a></p>
-    </div>
+
     <div style="width: 100px;height: 100px;background-color: #3a8ceb;float:right;position: relative;top: 50px;left: 100px;">
         <!--<a href="javascript:;" name="img/1.jpg"><img src="img/"/></a>-->
     </div>
-<!--</div>-->
+    <!--</div>-->
     <div class="nei"></div>
     <div class="dizhi">
         <div style="width: 950px;height: 25px;margin: 0 auto;padding-top: 15px; ">
@@ -591,5 +616,20 @@
         </div>
     </div>
 </div>
+<div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 100) {
+                $(".actGotop").fadeIn(300);
+            } else {
+                $(".actGotop").fadeOut(300);
+            }
+        });
+        $(".actGotop").click(function () {
+            $("html,body").animate({"scrollTop": "0"}, 500)
+        })
+    })
+</script>
 </body>
 </html>
