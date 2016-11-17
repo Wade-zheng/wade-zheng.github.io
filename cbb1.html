@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>华北理工大学迁安学院官网</title>
+    <link rel="shortcut icon" href="image/t1.jpg">
+    <link rel="stylesheet" href="css/homepage1.css">
+    <style>
+        #ul {
+            height: 50px;
+            position: relative;
+            list-style: none;
+        }
+
+        #ul li {
+            width: 120px;
+            height: 50px;
+            margin-left: 36px;
+            float: left;
+        }
+
+        #ul a {
+            display: block;
+            width: 100px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+        }
+
+        .pic {
+            display: none;
+            width: 1330px;
+            height: 200px;
+            /*border: 1px solid #000;*/
+            position: absolute;
+            top: 49px;
+            left: -114px;
+            z-index: 2;
+            background-color: #fff;
+        }
+
+        .pic p {
+            width: 200px;
+            height: 100px;
+            padding-top: 32px;
+            float: left;
+            margin-left: 100px;
+            line-height: 30px;
+        }
+
+        .pic1 {
+            width: 350px;
+            height: 150px;
+            float: left;
+            margin-left: 125px;
+            margin-top: 20px;
+
+        }
+
+        .pic11 {
+            background: url("image/t1.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic12 {
+            background: url("image/t2.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic13 {
+            background: url("image/t3.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic14 {
+            background: url("image/t4.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic15 {
+            background: url("image/t5.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic16 {
+            background: url("image/t6.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic17 {
+            background: url("image/t7.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .link {
+            margin-top: 20px;
+            width: 110px;
+            margin-left: 40px;
+            float: left;
+        }
+
+        .link a {
+            display: block;
+            width: 200px;
+        }
+
+        .active {
+            background: rgb(143, 0, 11);
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //定时器自动切换
+            var i = 0;
+            var timer;
+            var isClick = 0;
+            timer = setInterval(dh, 3000);
+            function dh() {
+                i++;
+                i = i > 3 ? 0 : i;
+                $(".bannerbox ul li").eq(i).stop(true, true).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+            }
+
+            //箭头显示/隐藏
+            $(".bannerbox").hover(function () {
+                clearInterval(timer);
+                $(".arrow").show();
+            }, function () {
+                if (!isClick) {
+                    timer = setInterval(dh, 3000);
+                }
+                isClick = 0;
+                $(".arrow").hide();
+            });
+            //next点击
+            $(".next").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                dh();
+                timer = setInterval(dh, 3000);
+            });
+            //prev点击
+            $(".prev").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i--;
+                i = i < 0 ? 3 : i;
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+                timer = setInterval(dh, 3000);
+            });
+            //下标切换
+            $("ol li").mouseover(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i = $(this).index();
+                isClick = 1;
+                $("ol li").eq(i).addClass("showtip").siblings("ol li").removeClass("showtip");
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                timer = setInterval(dh, 3000);
+            });
+        })
+    </script>
+    <script>
+        window.onload = function () {
+            var ul = document.getElementById("ul");
+            var li = ul.getElementsByTagName("li");
+            var div = document.getElementsByClassName("pic");
+            for (var i = 0; i < li.length; i++) {
+                li[i].index = i;
+                li[i].onmouseover = function () {
+//                    alert(this.index);
+                    for (var i = 0; i < li.length; i++) {
+                        div[i].style.display = "none";
+                        li[i].className = "";
+                    }
+                    li[this.index].className = "active";
+                    div[this.index].style.display = "block";
+
+
+                }
+                li[i].onmouseout = function () {
+//                    alert(this.index);
+                    for (var i = 0; i < li.length; i++)
+                        li[i].className = "";
+                    div[this.index].style.display = "none";
+
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="tou" style="margin: auto;">
+    <div id="shukuang">
+        <div class="shou">
+            <div class="diyi">
+                <a href="#">学生</a>
+                <a href="#">教职工</a>
+                <a href="#">校友</a>
+                <a href="#">家长</a>
+                <a href="#">访客</a>
+                <a href="#">招聘</a>
+            </div>
+            <div class="dier">
+                <a href="#">English</a>
+                <a href="#">领导信箱</a>
+                <a href="#">图书馆</a>
+                <a href="#">网络</a>
+                <input type="text" style="width: 80px;height: 23px;position: relative;top:-1px;left:186px;">
+                <input type="image" src="image/1.bmp"
+                       style="width: 30px;height: 27px;position: relative;top:8px;left:178px;">
+            </div>
+        </div>
+    </div>
+    <div id="bo">
+        <div class="tubiao">
+
+        </div>
+        <div id="chaxun">
+            <ul id="ul">
+                <li><a href="#">迁院概况</a>
+                    <div class="pic">
+                        <div class="pic1 pic11"></div>
+                        <p>迁院以常为新。</p>
+                        <div class="link">
+                            <a href="#">迁院简介</a>
+                            <a href="#">现任领导</a>
+                            <a href="#">历任领导</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">组织结构</a>
+                            <a href="#">历史名人</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">信息公开</a>
+                            <a href="#">绿色校园</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">招生与资源</a>
+                    <div class="pic">
+                        <div class="pic1 pic12"></div>
+                        <p>宝剑锋从磨砺出</p>
+                        <div class="link">
+                            <a href="#">转升本</a>
+                            <a href="#">留学生</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">励志奖学金</a>
+                            <a href="#">贫困生</a>
+                            <a href="#">学生资助中心</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">暑期学校</a>
+                            <a href="#">国际暑期学校</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">院系设置</a>
+                    <div class="pic">
+                        <div class="pic1 pic13"></div>
+                        <p>梅花香自苦寒来</p>
+                        <div class="link">
+                            <a href="#">机械工程系</a>
+                            <a href="#">建筑与矿业系</a>
+                            <a href="#">材料与化工系</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">电气与信息系</a>
+                            <a href="#">商学与人文系</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">体育部</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">教育教学</a>
+                    <div class="pic">
+                        <div class="pic1 pic14"></div>
+                        <p>离离原上草</p>
+                        <div class="link">
+                            <a href="#">师资队伍</a>
+                            <a href="#">继续教育</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">课程设置</a>
+                            <a href="#">课表查询</a>
+                            <a href="#">成绩查询</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">慕课</a>
+                            <a href="#">公开课</a>
+                            <a href="#">证书验证</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">职能处室</a>
+                    <div class="pic">
+                        <div class="pic1 pic15"></div>
+                        <p>天生我才必有用</p>
+                        <div class="link">
+                            <a href="#">综合办公室</a>
+                            <a href="#">人事处</a>
+                            <a href="#">教导处</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">财务处</a>
+                            <a href="#">学生工作处（团委）</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">教务处</a>
+                            <a href="#">后勤管理处</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">合作交流</a>
+                    <div class="pic">
+                        <div class="pic1 pic16"></div>
+                        <p>志于道，据于德，依于仁，游于艺。</p>
+                        <div class="link">
+                            <a href="#">合作概览</a>
+
+
+                        </div>
+                        <div class="link">
+                            <a href="#">国际交流</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">内地合作</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">校园生活</a>
+                    <div class="pic">
+                        <div class="pic1 pic17"></div>
+                        <p>秋冬春夏，
+                            伴随着四时的运行，
+                            青春和迁园融为一体，
+                            迁院成为永恒</p>
+                        <div class="link">
+                            <a href="#">艺术与文化</a>
+                            <a href="#">体育与健康</a>
+                            <a href="#">学生社团</a>
+                            <a href="#">教工社团</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">志愿公益</a>
+                            <a href="#">校史档案</a>
+                            <a href="#">会议讲座</a>
+                            <a href="#">电影演出</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">管理服务</a>
+                            <a href="#">后勤服务</a>
+                            <a href="#">观光访问</a>
+                            <a href="#">校历</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--<div class="baiyechuang">-->
+            <!--<div class="bannerbox">-->
+                <!--<ul>-->
+                    <!--<li style="display: block"><a href="javascript:;"><img src="image/lidong.jpg" alt=""></a></li>-->
+                    <!--<li><a href="javascript:;"><img src="image/" alt=""></a></li>-->
+                    <!--<li><a href="javascript:;"><img src="image/renwu.jpg" alt=""></a></li>-->
+                    <!--<li><a href="javascript:;"><img src="image/" alt=""></a></li>-->
+                <!--</ul>-->
+                <!--<ol>-->
+                    <!--<li class="showtip">●</li>-->
+                    <!--<li>●</li>-->
+                    <!--<li>●</li>-->
+                    <!--<li>●</li>-->
+                <!--</ol>-->
+                <!--<div class="arrow">-->
+                    <!--<div class="prev">＜</div>-->
+                    <!--<div class="next">＞</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    </div>
+    <!--<div id="zhong">-->
+        <!--<section class="con_wap">-->
+            <!--<section class="new">-->
+                <!--<h2><a href="#" style="color: #2e2e2e;font-size: 25px"><b>学院新闻</b></a></h2>-->
+                <!--<section class="newL">-->
+                    <!--<a href="#" target="_blank" style="color:dimgray">-->
+                        <!--<img src="image/kh.jpg"-->
+                             <!--border="0" width="270" height="130">-->
+                        <!--<h3>“互信·合作·共享”——秋季大学生创业项目遴选评审会</h3></a>-->
+                    <!--<p style="color:black">11月7日上午，在创业孵化园B205会议室举行。学院副书记、副院长边社辉，学工处处长郑志高，-->
+                        <!--团委书记、学工处副处长郑建辉及相关专业教师出席并担任评委。</p>-->
+                <!--</section>-->
+
+                <!--<section class="newR">-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">我院教师荣获第四届全国青年教师混凝土结构教学</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">我院召开大学生创新性实验计划项目中期报告会</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#" target="_blank">院领导带队访问秦皇岛臻鼎科技控股股份有限公司</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#" target="_blank">学院领导带队走访校外实习基地</a>-->
+                    <!--</li>-->
+                <!--</section>-->
+                <!--<ul class="newR">-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">院领导带队就创新创业工作到燕山大学等高校学习</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">我院召开学生就业及创新创业工作专题推进会</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">我院志愿者圆满完成2016年迁安经贸洽谈会志愿服</a>-->
+                    <!--</li>-->
+                    <!--<li><a href="#"-->
+                           <!--target="_blank">校安全工作处领导来我院检查指导安全工作</a>-->
+                    <!--</li>-->
+                    <!--<li class="last">-->
+                        <!--<a class="lastL" href="#">今天有-->
+        <!--<span id="notice_num" style="font-family: Georgia;">-->
+<!--<b>&nbsp;0&nbsp;</b></span> 条新通知</a><a class="lastR" href="#">进新闻网→</a></li>-->
+                <!--</ul>-->
+            <!--</section>-->
+        <!--</section>-->
+        <!--<div class="zonghe">-->
+            <!--<div style="float: left;">-->
+                <!--<div class="gonggao"><h3 style="color: #2e2e2e;font-size: 25px">通知公告</h3>-->
+                    <!--<div class="line"></div>-->
+                    <!--<ul style="padding-top: 10px">-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">华北理工大学迁安学院关于举办第三届辅导员职业技</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">关于2016年热力供暖试水的通知</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">华北理工大学迁安学院2017届毕业生秋季大型招聘会</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">关于遴选大学生优秀创业项目入驻华北理工大学&#45;&#45;迁安学院</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">关于进行2016年度业绩考核的通知</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">关于举行2016级新生开学典礼的通知</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="jiceng"><h3 style="color: #2e2e2e;font-size: 25px">基层动态</h3>-->
+                    <!--<div class="line"></div>-->
+                    <!--<ul>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系第四届“迎新杯”篮球赛圆满结束</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">河北天元地理信息科技工程有限公司来我院举办专</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系开展工程师进课堂教学活动</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">材料与化工系学生党支部开展“忆峥嵘岁月，悟长征</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">电气与信息系举办毕业生就业指导讲座</a></li>-->
+                        <!--<li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系“梦启建矿，心引征程”文艺汇演圆满</a></li>-->
+                    <!--</ul>-->
+                <!--</div>-->
+                <!--<div class="keyan"><h3 style="color: #2e2e2e;font-size: 25px">教学科研</h3>-->
+                    <!--<div class="line"></div>-->
+                    <!--<p style="list-style: none;padding-top: 10px">-->
+                        <!--<a href="#" style="list-style: none;color: black">北大生命科学学院汤富酬组发表人类与小鼠胚胎生殖细胞的表观基因组研究最新结果</a></p>-->
+                    <!--<p style="list-style: none;padding-top: 8px;">近日析了人类与小鼠胚胎期生殖细胞中染色质开其与基因表达的关系。</p>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div style="float: right;width: 400px;height: 700px;">-->
+                <!--<div class="kuaisu">-->
+                    <!--<div class="tongdaobiao"><b>快速通道</b></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+                    <!--<div class="lianjie"></div>-->
+
+
+                <!--</div>-->
+                <!--<div class="liuyan">-->
+                    <!--<form><p style="font-size:30px;padding-top: 26px"><b>留言板：</b></p>-->
+                        <!--<label><textarea rows="10px" cols="50px"-->
+                                         <!--style="margin: auto;border-bottom: 3px solid brown;-->
+                                         <!--border-top: 3px solid brown;-->
+                                         <!--border-left: 3px solid brown;-->
+                                         <!--border-right: 3px solid brown;">-->
+
+                        <!--</textarea></label>-->
+                    <!--</form>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div id="fwe">
+
+        <h2><img src="image/ft.png" alt="">学院概况</h2>
+      <p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">华北理工大学迁安学院是经河北省教育厅批准，由迁安市人民政府和华北理工大学合作共建的全日制普通高等学校。学院以工学为主，工学、管理学、文学等学科相结合，面向全国招生，为社会培养高素质应用型专门人才。学院坐落在燕山南麓，滦河岸边，被誉为国家级园林城市，中国宜居城市的河北省迁安市，</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">京津唐秦承</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">城市圈中心位置，交通四通八达。校园占地</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">1000</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">亩，建筑面积</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">14</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">万平方米，建筑别雅，草木繁茂，环境宜人。学院现有在校生</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">3500</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">人。</span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">学院秉承华北理工大学</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">明德博学、勤奋求实</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">的校训，传承</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">崇术重用、服务地方</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">的办学理念，按照</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">融入迁安，立足河北，根植矿冶，服务地方</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">的办学定位，坚持</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">以就业为导向，面向地方经济建设，走产学结合的发展道路</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">，实施</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">一主线、两体系、三循环、四结合</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">的人才培养模式。以能力培养为主线，按照知识、能力、素质结构体系要求构建新的理论教学和实践教学循环体系，注重工学结合、课内外结合、学校与社会结合和长短学期结合，注重教学过程的实践性、开放性和职业性。积极推行认证培养、竞赛培养、订单培养、顶岗实习等有利于增强学生能力的多种教学模式和教学途径。专业建设与区域性的支柱产业、优势产业和新型产业接轨，取得了显著的成绩，为地方经济社会发展做出了积极贡献。</span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">学院依托华北理工大学的雄厚师资，办学条件优越。以</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">材料、冶金与能源大类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">、</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">资源开发与测绘大类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">等强势学科为依托，以</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">机械制造类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">、</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">自动化类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">、</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">土建类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">、</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">生化类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">、</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">财经类</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">等专业为支撑，现有冶金技术、材料成型与控制技术、热能动力设备与应用、材料工程技术、金属矿开采技术、选矿技术、工程测量技术、建筑工程技术、建筑工程管理、机械制造与自动化、生产过程自动化技术、电气自动化技术、检测技术与应用、计算机应用技术、应用化工技术、工业分析与检验、食品加工技术、工商企业管理、应用英语等</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">19</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">个招生专业，学制为</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">3</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">年。</span><span style="FONT-SIZE: 19px"> </span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">学院始终坚持把提高教育教学质量放在首位，走内涵式发展道路，教学成果显著。在国家级和省级英语和计算机等级考试中，多次取得优异成绩，在全省同类院校中名列前茅。学院积极开辟学生实习和就业渠道，毕业生就业率在全省同类院校中位居前列。学院加强与国外合作交流办学，与美国艾佛瑞特社区大学签订合作办学协议，双方可互派教师、学生到对方教学、学习深造。</span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">学院注重学生综合素质的培养和提高，在国家和省级学生竞赛中，学生先后获得全国高校采矿工程专业学生实践作品大赛三等奖、全国大学生“飞思卡尔”杯智能汽车竞赛（华北赛区决赛）三等奖，多人获得中央电视台“希望之星”英语风采大赛二等奖和三等奖、全国大学生英语竞赛专业组和非专业组一等奖、全国青少年英语读写大赛写作类（大学组）金奖、河北省</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">世纪之星</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">英语演讲比赛专业组二等奖。我院贺颖同学先后获得中国大学生自强之星提名奖、全国励志成长成才优秀学生典型、河北省“百姓故事汇”自强自立之星。学院荣获全国大学生英语竞赛优秀组织奖、全国青少年英语读写示范学校、河北省思想政治工作案例创新奖、迁安市文明单位等荣誉称号。我院</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">爱心</span><span style="FONT-SIZE: 19px"> </span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">传承</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">志愿者服务队获</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">“</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">河北省教育系统优秀志愿服务组织</span><span style="FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">”</span></span><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">称号。</span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">学院教师素质不断提高，在首届全国外语微课大赛中获河北省赛区高职高专英语组三等奖；在河北省首届高校微课教学比赛中获二等奖和三等奖；三项成果在全国高校学生工作学术成果评选中获全国高校学生工作优秀学术成果二等奖；三名教师在河北省辅导员技能大赛中获专科组决赛三等奖。</span></p><p style="TEXT-ALIGN: left; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="FONT-FAMILY: 宋体; FONT-SIZE: 19px">站在新的历史起点，迁安学院将<span style="COLOR: black">扬帆起航，向着更加辉煌灿烂的明天奋进！</span></span></p><p style="TEXT-ALIGN: center; TEXT-INDENT: 37px; MARGIN: 5px 0px"><span style="COLOR: black; FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">2015</span></span><span style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 19px">年</span><span style="COLOR: black; FONT-SIZE: 19px"><span style="FONT-FAMILY: Calibri">6</span></span><span style="FONT-FAMILY: 宋体; COLOR: black; FONT-SIZE: 19px">月修订</span></p><p></p></div>
+
+</div>
+
+</div>
+<div id="tu4" style="margin: auto;">
+
+    <div style="width: 80px;height: 125px;float: left;padding-top:25px; ">
+        <div style="width: 60px;height: 60px;position:relative;top:0px;left: -5px; ">
+            <img src="image/zt_icon.jpg" alt=""
+                 style="width: 60px;height: 60px;position:relative;top:4px;left: 10px; ">
+        </div>
+        <div style="width: 80px;height: 30px;margin: 0 auto;position:relative;top:10px;left: 3px;color:dimgrey;">
+            专题网站
+        </div>
+    </div>
+
+    <div class="zhuantitu"><img src="image/64006a60c64a18e9800137.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t1.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t3.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t5.png" alt=""></div>
+    <div class="zhuantitu"><img src="image/t6.jpg" alt=""></div>
+</div>
+<div id="wei" style="margin: auto;">
+    <div class="nei">
+
+    </div>
+</div>
+</body>
+</html>
