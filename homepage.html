@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='icon' href="favicon.ico" type="image/x-icon">
+    <title>华北理工大学迁安学院官网</title>
+    <link rel="stylesheet" href="homepage.css">
+    <style>
+        #ul {
+            height: 50px;
+            position: relative;
+            list-style: none;
+        }
+
+        #ul li {
+            width: 120px;
+            height: 50px;
+            margin-left: 36px;
+            float: left;
+        }
+
+        #ul a {
+            display: block;
+            width: 120px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        .pic {
+            display: none;
+            width: 1330px;
+            height: 210px;
+            /*border: 1px solid #000;*/
+            position: absolute;
+            top: 49px;
+            left: -114px;
+            z-index: 2;
+            background-color: #fff;
+        }
+
+        .pic p {
+            width: 200px;
+            height: 100px;
+            padding-top: 32px;
+            float: left;
+            margin-left: 100px;
+            line-height: 30px;
+        }
+
+        .pic1 {
+            width: 350px;
+            height: 150px;
+            float: left;
+            margin-left: 125px;
+            margin-top: 20px;
+
+        }
+
+        .pic11 {
+            background: url("image/t1.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic12 {
+            background: url("image/t2.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic13 {
+            background: url("image/t3.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic14 {
+            background: url("image/t4.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic15 {
+            background: url("image/t5.png") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic16 {
+            background: url("image/t6.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .pic17 {
+            background: url("image/t7.jpg") no-repeat;
+            background-size: 100% 100%;
+        }
+
+        .link {
+            margin-top: 20px;
+            width: 110px;
+            margin-left: 40px;
+            float: left;
+        }
+
+        .pic .link a:hover {
+            color: rgb(112, 0, 5);
+            font-size: 20px;
+
+        }
+
+        .link a {
+            display: block;
+            width: 200px;
+            text-decoration: none;
+        }
+
+        .active {
+            background: rgb(143, 0, 11);
+        }
+        /*回到顶部*/
+        .actGotop {
+            position: fixed;
+            _position: absolute;
+            bottom: 100px;
+            right: 50px;
+            width: 150px;
+            height: 195px;
+            display: none;
+        }
+
+        .actGotop a, .actGotop a:link {
+            width: 150px;
+            height: 195px;
+            display: inline-block;
+            background: url(image/gotop.png) no-repeat;
+            _background: url(image/gotop.gif) no-repeat;
+            outline: none;
+        }
+
+        .actGotop a:hover {
+            width: 150px;
+            height: 195px;
+            background: url(image/gotopd.gif) no-repeat;
+            outline: none;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.8.3.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //定时器自动切换
+            var i = 0;
+            var timer;
+            var isClick = 0;
+            timer = setInterval(dh, 3000);
+            function dh() {
+                i++;
+                i = i > 3 ? 0 : i;
+                $(".bannerbox ul li").eq(i).stop(true, true).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+            }
+
+            //箭头显示/隐藏
+            $(".bannerbox").hover(function () {
+                clearInterval(timer);
+                $(".arrow").show();
+            }, function () {
+                if (!isClick) {
+                    timer = setInterval(dh, 3000);
+                }
+                isClick = 0;
+                $(".arrow").hide();
+            });
+            //next点击
+            $(".next").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                dh();
+                timer = setInterval(dh, 3000);
+            });
+            //prev点击
+            $(".prev").click(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i--;
+                i = i < 0 ? 3 : i;
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                $("ol li").eq(i).addClass("showtip").siblings().removeClass("showtip");
+                timer = setInterval(dh, 3000);
+            });
+            //下标切换
+            $("ol li").mouseover(function () {
+                isClick = 1;
+                clearInterval(timer);
+                i = $(this).index();
+                isClick = 1;
+                $("ol li").eq(i).addClass("showtip").siblings("ol li").removeClass("showtip");
+                $(".bannerbox ul li").stop(true, true).eq(i).fadeIn(800).siblings(".bannerbox ul li").fadeOut(800);
+                timer = setInterval(dh, 3000);
+            });
+        })
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+//            第一种方法
+//            $("a").hover(function () {
+//                var tip = '<div id="tooltip"><img src="' + this.name + '"></div>';
+//                $("body").append(tip);
+//                $("#tooltip").show("fast");
+//                $(this).mousemove(function (event) {
+//                    $("#tooltip").css({"left": event.pageX + 5 + "px", "top": event.pageY + 5 + "px"})
+//                });
+//            }, function () {
+//                $("#tooltip").remove();
+//            });
+
+
+//            第二张方法
+            $("a").hover(function () {
+                var tip = '<div id="tooltip"><img src="' + this.name + '"></div>';
+                $("body").append(tip);
+                $("#tooltip").show("fast");
+            }, function () {
+                $("#tooltip").remove();
+            }).mousemove(function (event) {
+                $("#tooltip").css({"left": -event.pageX - 115 + "px", "top": -event.pageY -115 + "px"})
+            });
+        })
+    </script>
+    <script>
+        window.onload = function () {
+            var ul = document.getElementById("ul");
+            var li = ul.getElementsByTagName("li");
+            var div = document.getElementsByClassName("pic");
+            for (var i = 0; i < li.length; i++) {
+                li[i].index = i;
+                li[i].onmouseover = function () {
+//                    alert(this.index);
+                    for (var i = 0; i < li.length; i++) {
+                        div[i].style.display = "none";
+                        li[i].className = "";
+                    }
+                    li[this.index].className = "active";
+                    div[this.index].style.display = "block";
+
+
+                }
+                li[i].onmouseout = function () {
+//                    alert(this.index);
+                    for (var i = 0; i < li.length; i++)
+                        li[i].className = "";
+                    div[this.index].style.display = "none";
+
+                }
+
+            }
+        }
+    </script>
+</head>
+<body>
+<div id="tou" style="margin: auto;">
+    <div id="shukuang">
+        <div class="shou">
+            <div class="diyi">
+                <a href="#" style="margin-right: 20px;">学生</a>
+                <a href="#" style="margin-right: 20px;">教职工</a>
+                <a href="#" style="margin-right: 20px;">校友</a>
+                <a href="#" style="margin-right: 20px;">家长</a>
+                <a href="#" style="margin-right: 20px;">访客</a>
+                <a href="#" style="margin-right: 20px;">招聘</a>
+            </div>
+            <div class="dier">
+                <a href="#" style="margin-right: 20px;">English</a>
+                <a href="#" style="margin-right: 20px;">领导信箱</a>
+                <a href="#" style="margin-right: 20px;">图书馆</a>
+                <a href="#" style="margin-right: 20px;">网络</a>
+                <input type="text" style="width: 80px;height: 23px;position: relative;top:-1px;left:138px;">
+                <input type="image" src="image/1.bmp"
+                       style="width: 30px;height: 27px;position: relative;top:8px;left:130px;">
+            </div>
+        </div>
+    </div>
+    <div id="bo">
+        <div class="tubiao">
+
+        </div>
+        <div id="chaxun">
+            <ul id="ul">
+                <li><a href="#">迁院概况</a>
+                    <div class="pic">
+                        <div class="pic1 pic11"></div>
+                        <p>明德博学
+                            博学求实</p>
+                        <div class="link">
+                            <a href="cbb1.html">迁院简介</a>
+                            <a href="cbb3.html">现任领导</a>
+                            <a href="#">历任领导</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">组织结构</a>
+                            <a href="#">历史名人</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">信息公开</a>
+                            <a href="#">绿色校园</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">招生与资源</a>
+                    <div class="pic">
+                        <div class="pic1 pic12"></div>
+                        <p>知、仁、勇三者，天下之达德也</p>
+                        <div class="link">
+                            <a href="#">专升本</a>
+                            <a href="#">留学生</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">励志奖学金</a>
+                            <a href="#">贫困生</a>
+                            <a href="#">学生资助中心</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">暑期学校</a>
+                            <a href="#">国际暑期学校</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">院系设置</a>
+                    <div class="pic">
+                        <div class="pic1 pic13"></div>
+                        <p>诚信立身，廉洁自律，正派做人</p>
+                        <div class="link">
+                            <a href="#">机械工程系</a>
+                            <a href="#">建筑与矿业系</a>
+                            <a href="#">材料与化工系</a>
+                        </div>
+                        <div class="link">
+                            <a href="cbb2.html">电气与信息系</a>
+                            <a href="#">商学与人文系</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">体育部</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">教育教学</a>
+                    <div class="pic">
+                        <div class="pic1 pic14"></div>
+                        <p>当仁不让于师</p>
+                        <div class="link">
+                            <a href="#">师资队伍</a>
+                            <a href="#">继续教育</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">课程设置</a>
+                            <a href="#">课表查询</a>
+                            <a href="#">成绩查询</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">慕课</a>
+                            <a href="#">公开课</a>
+                            <a href="#">证书验证</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">职能处室</a>
+                    <div class="pic">
+                        <div class="pic1 pic15"></div>
+                        <p>弘扬中华美德，构建和谐学校</p>
+                        <div class="link">
+                            <a href="#">综合办公室</a>
+                            <a href="#">人事处</a>
+                            <a href="#">教导处</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">财务处</a>
+                            <a href="#">学生工作处</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">教务处</a>
+                            <a href="#">后勤管理处</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">合作交流</a>
+                    <div class="pic">
+                        <div class="pic1 pic16"></div>
+                        <p>秋冬春夏，
+                            伴随着四时的运行，
+                            青春和迁园融为一体，
+                            迁院成为永恒</p>
+                        <div class="link">
+                            <a href="#">合作概览</a>
+
+
+                        </div>
+                        <div class="link">
+                            <a href="#">国际交流</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">内地合作</a>
+                        </div>
+                    </div>
+                </li>
+                <li><a href="#">校园生活</a>
+                    <div class="pic">
+                        <div class="pic1 pic17"></div>
+                        <p>志于道，据于德，依于仁，游于艺。</p>
+                        <div class="link">
+                            <a href="#">艺术与文化</a>
+                            <a href="#">体育与健康</a>
+                            <a href="#">学生社团</a>
+                            <a href="#">教工社团</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">志愿公益</a>
+                            <a href="#">校史档案</a>
+                            <a href="#">会议讲座</a>
+                            <a href="#">电影演出</a>
+                        </div>
+                        <div class="link">
+                            <a href="#">管理服务</a>
+                            <a href="#">后勤服务</a>
+                            <a href="#">观光访问</a>
+                            <a href="#">校历</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="baiyechuang">
+            <div class="bannerbox">
+                <ul>
+                    <li style="display: block"><a href="javascript:;"><img src="image/985.png" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="image/959.jpg" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="image/renwu.jpg" alt=""></a></li>
+                    <li><a href="javascript:;"><img src="image/lidong.jpg" alt=""></a></li>
+                </ul>
+                <ol>
+                    <li class="showtip">●</li>
+                    <li>●</li>
+                    <li>●</li>
+                    <li>●</li>
+                </ol>
+                <div class="arrow">
+                    <div class="prev">＜</div>
+                    <div class="next">＞</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="zhong">
+        <section class="con_wap">
+            <section class="new">
+                <h2><a href="#" style="color: #2e2e2e;font-size: 25px"><b>学院新闻</b></a></h2>
+                <section class="newL">
+                    <a href="#" target="_blank" style="color:dimgray">
+                        <img src="image/kh.jpg"
+                             border="0" width="270px" height="130px">
+                        <h3>“互信·合作·共享”——秋季大学生创业项目遴选评审会</h3></a>
+                    <p style="color:#bebebe">11月7日上午，在创业孵化园B205会议室举行。学院副书记、副院长边社辉，学工处处长郑志高，
+                        团委书记、学工处副处长郑建辉及相关专业教师出席并担任评委。</p>
+                </section>
+
+                <section class="newR">
+                    <li><a href="#"
+                           target="_blank">我院教师荣获第四届全国青年教师混凝土结构教学</a>
+                    </li>
+                    <li><a href="#"
+                           target="_blank">我院召开大学生创新性实验计划项目中期报告会</a>
+                    </li>
+                    <li><a href="#" target="_blank">院领导带队访问秦皇岛臻鼎科技控股股份有限公司</a>
+                    </li>
+                    <li><a href="#" target="_blank">学院领导带队走访校外实习基地</a>
+                    </li>
+                </section>
+                <ul class="newR">
+                    <li><a href="#"
+                           target="_blank">院领导带队就创新创业工作到燕山大学等高校学习</a>
+                    </li>
+                    <li><a href="#"
+                           target="_blank">我院召开学生就业及创新创业工作专题推进会</a>
+                    </li>
+                    <li><a href="#"
+                           target="_blank">我院志愿者圆满完成2016年迁安经贸洽谈会志愿服</a>
+                    </li>
+                    <li><a href="#"
+                           target="_blank">校安全工作处领导来我院检查指导安全工作</a>
+                    </li>
+                    <li class="last">
+                        <a class="lastL" href="#">今天有
+        <span id="notice_num" style="font-family: Georgia;">
+<b>&nbsp;0&nbsp;</b></span> 条新通知</a><a class="lastR" href="#">进新闻网→</a></li>
+                </ul>
+            </section>
+        </section>
+        <div class="zonghe">
+            <div style="float: left;">
+                <div class="gonggao"><h3 style="color: #2e2e2e;font-size: 25px">通知公告</h3>
+                    <div class="line"></div>
+                    <ul style="padding-top: 10px">
+                        <li style="list-style: none;padding-top: 8px"><a href="#">华北理工大学迁安学院关于举办第三届辅导员职业技</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">关于2016年热力供暖试水的通知</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">华北理工大学迁安学院2017届毕业生秋季大型招聘会</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">关于遴选大学生优秀创业项目入驻华北理工大学--迁安学院</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">关于进行2016年度业绩考核的通知</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">关于举行2016级新生开学典礼的通知</a></li>
+                    </ul>
+                </div>
+                <div class="jiceng"><h3 style="color: #2e2e2e;font-size: 25px">基层动态</h3>
+                    <div class="line"></div>
+                    <ul>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系第四届“迎新杯”篮球赛圆满结束</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">河北天元地理信息科技工程有限公司来我院举办专</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系开展工程师进课堂教学活动</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">材料与化工系学生党支部开展“忆峥嵘岁月，悟长征</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">电气与信息系举办毕业生就业指导讲座</a></li>
+                        <li style="list-style: none;padding-top: 8px"><a href="#">建筑与矿业系“梦启建矿，心引征程”文艺汇演圆满</a></li>
+                    </ul>
+                </div>
+                <div class="keyan"><h3 style="color: #2e2e2e;font-size: 25px">教学科研</h3>
+                    <div class="line"></div>
+                    <p style="list-style: none;padding-top: 10px">
+                        <a href="#" style="list-style: none;color: black">学院CBB组发表人类与小鼠胚胎生殖细胞的表观基因组研究最新结果</a></p>
+                    <p style="list-style: none;padding-top: 8px;">近日析了人类与小鼠胚胎期生殖细胞中染色质开其与基因表达的关系。</p>
+                </div>
+            </div>
+            <div style="float: right;width: 400px;height: 700px;">
+                <div class="kuaisu">
+                    <div class="tongdaobiao"><b>快速通道</b></div>
+                    <div class="lianjie">
+                        <img src="image/01.png" style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">理工首页</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/02.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">登录上网</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/03.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">校内资源</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/04.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">办公系统</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/05.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">校园资讯</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/06.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">教务系统</a></div>
+                    </div>
+                    <div class="lianjie"><img src="image/07.png"
+                                              style="width: 40px;height: 40px;padding-top: 10px;float: left;">
+                        <div style="font-size: 23px;height: 25px;width: 150px;margin:0px auto;
+                            padding-top: 20px;font-family: 仿宋_GB2312;"><a href="#">邮箱登录</a></div>
+                    </div>
+                </div>
+                <div class="liuyan">
+                    <form><p style="font-size:30px;padding-top: 26px"><b>留言板：</b></p>
+                        <label><textarea rows="8" cols="50"
+                                         style="margin: auto;border-bottom: 3px solid brown;
+                                         border-top: 3px solid brown;
+                                         border-left: 3px solid brown;
+                                         border-right: 3px solid brown;"></textarea></label>
+                        <input type="reset" value="提交" style="float:right;margin-right: 30px;width: 40px;height: 25px;">
+                        <input type="reset" value="重置" style="float:right;margin-right: 10px;width: 40px;height: 25px;">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="tu4" style="margin: auto;">
+    <div style="width: 80px;height: 125px;float: left;padding-top:25px; ">
+        <div style="width: 60px;height: 60px;position:relative;top:0px;left: -5px; ">
+            <img src="image/zt_icon.jpg" alt=""
+                 style="width: 60px;height: 60px;position:relative;top:4px;left: 10px; ">
+        </div>
+        <div style="width: 80px;height: 30px;margin: 0 auto;position:relative;top:10px;left: 3px;color:dimgrey;">
+            专题网站
+        </div>
+    </div>
+    <div class="zhuantitu"><img src="image/64006a60c64a18e9800137.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t1.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t3.jpg" alt=""></div>
+    <div class="zhuantitu"><img src="image/t5.png" alt=""></div>
+    <div class="zhuantitu"><img src="image/t6.jpg" alt=""></div>
+</div>
+<div id="wei">
+    <!--<div style="width: 135px;height: 75px;">-->
+
+    <div style="width: 100px;height: 100px;background-color: #3a8ceb;float:right;position: relative;top: 50px;left: 100px;">
+        <!--<a href="javascript:;" name="img/1.jpg"><img src="img/"/></a>-->
+    </div>
+    <!--</div>-->
+    <div class="nei"></div>
+    <div class="dizhi">
+        <div style="width: 950px;height: 25px;margin: 0 auto;padding-top: 15px; ">
+            <div style="width: 119px;height: 16px;border-right:1px solid gainsboro;float: left;">
+                <p><a style="color:gainsboro;font-size: 13px;padding-top: 0px;padding-left: 14px; ">版权所有@CBB组</a></p></div>
+            <div style="width: 200px;height: 16px;border-right:1px solid gainsboro;float: left;">
+                <p><a style="color:gainsboro;font-size: 13px;padding-top: 0px;padding-left: 14px; ">地址：迁安市燕山大路5096号</a></p></div>
+            <div style="width: 140px;height: 16px;border-right:1px solid gainsboro;float: left;">
+                <p><a style="color:gainsboro;font-size: 13px;padding-top: 0px;padding-left: 14px; ">邮政编码：064400</a></p></div>
+            <div style="width: 200px;height: 16px;border-right:1px solid gainsboro;float: left;">
+                <p><a style="color:gainsboro;font-size: 13px;padding-top: 0px;padding-left: 14px; ">邮箱：webmaster@pku.edu.cn</a></p></div>
+            <div style="width: 170px;height: 16px;border-right:1px solid gainsboro;float: left;">
+                <p><a style="color:gainsboro;font-size: 13px;padding-top: 0px;padding-left: 14px; ">咨询电话：0315-666666</a></p></div>
+
+        </div>
+    </div>
+</div>
+<div class="actGotop"><a href="javascript:;" title="Top"></a></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(window).scroll(function () {
+            if ($(window).scrollTop() >= 100) {
+                $(".actGotop").fadeIn(300);
+            } else {
+                $(".actGotop").fadeOut(300);
+            }
+        });
+        $(".actGotop").click(function () {
+            $("html,body").animate({"scrollTop": "0"}, 500)
+        })
+    })
+</script>
+</body>
+</html>
