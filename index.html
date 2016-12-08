@@ -213,16 +213,15 @@
 
 
 //            第二张方法
-            $("a").hover(function () {
+        $("#zhong .con_wap .new .newL a").hover(function () {
                 var tip = '<div id="tooltip"><img src="' + this.name + '"></div>';
                 $("body").append(tip);
                 $("#tooltip").show("fast");
             }, function () {
                 $("#tooltip").remove();
             }).mousemove(function (event) {
-                $("#tooltip").css({"left": -event.pageX - 115 + "px", "top": -event.pageY -115 + "px"})
+                $("#tooltip").css({"left": event.pageX + 5 + "px", "top": event.pageY + 5 + "px"})
             });
-        })
     </script>
     <script>
         window.onload = function () {
@@ -451,9 +450,11 @@
             <section class="new">
                 <h2><a href="#" style="color: #2e2e2e;font-size: 25px"><b>学院新闻</b></a></h2>
                 <section class="newL">
-                    <a href="#" target="_blank" style="color:dimgray">
-                        <img src="image/kh.jpg"
-                             border="0" width="270px" height="130px">
+                  <a href="#" target="_blank" style="color:dimgray">
+                        <a href="javascript:;" name="image/111.png"><img src="image/kh.jpg"/></a>
+                        <!--<img src="image/kh.jpg"
+                             border="0" width="270px" height="130px">-->
+                        
                         <h3>“互信·合作·共享”——秋季大学生创业项目遴选评审会</h3></a>
                     <p style="color:#bebebe">11月7日上午，在创业孵化园B205会议室举行。学院副书记、副院长边社辉，学工处处长郑志高，
                         团委书记、学工处副处长郑建辉及相关专业教师出席并担任评委。</p>
@@ -598,7 +599,7 @@
     <div style="width: 100px;height: 100px;background-color: #3a8ceb;float:right;position: relative;top: 50px;left: 100px;">
         <!--<a href="javascript:;" name="img/1.jpg"><img src="img/"/></a>-->
     </div>
-    <!--</div>-->
+<!--</div>-->
     <div class="nei"></div>
     <div class="dizhi">
         <div style="width: 950px;height: 25px;margin: 0 auto;padding-top: 15px; ">

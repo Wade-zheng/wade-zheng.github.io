@@ -295,7 +295,7 @@ a {
     margin: 0 auto;
     border-bottom: 3px solid brown;
     clear: both;
-    border-top: 20px solid #ffffff;
+    border-top: 0px solid #ffffff;
 }
 
 #tu4 .zhuantitu {
@@ -410,7 +410,7 @@ ul, ol {
 }
 #fwe h2{
     /*float: left;*/
-    width: 230px;
+    width: 240px;
     padding: 0 27px;
     text-align: center;
     border-bottom: 3px solid #9b0000;
@@ -419,10 +419,29 @@ ul, ol {
     width: 1019px;
     height: 802px;
     border-style:solid;
-    border-width: 1px;
+    border-width: 0px;
     border-color:rgb(143, 0, 11) ;
     margin-left: 143px;
-    margin-top: -360px;
+    margin-top: -390px;
+}
+
+#fwe .ren{
+    width: 300px;
+    height:300px;
+    float: left;
+    margin: 0 auto;
+}
+#fwe .ren .we{
+    width: 300px;
+    height:10px;
+    float: left;
+    text-align: center;
+    margin: auto auto;
+
+}
+#fwe .ren .we p span{
+    width: 300px;
+    text-align: center;
 }
 #fwe h2 img{
     width: 132px;
